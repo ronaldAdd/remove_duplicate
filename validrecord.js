@@ -73,7 +73,7 @@ manager = new CronJobManager( // this creates a new manager and adds the argumen
 } 
 );
 
-  manager.add('next_job opensea', '*/35 * * * * *', () => {
+  manager.add('next_job removeduplicate', '*/35 * * * * *', () => {
     var tmpData=[];
     for(let items of arrList){
       // let sql = `select * from block_transaction bt where transaction_hash='${items.transaction_hash}' and block_number='${items.block_number}'`;
@@ -115,7 +115,7 @@ manager = new CronJobManager( // this creates a new manager and adds the argumen
     }
     }
     );
-  manager.start('next_job opensea');
+  manager.start('next_job removeduplicate');
 
 //cron   
 
