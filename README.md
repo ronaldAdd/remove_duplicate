@@ -1,2 +1,2 @@
-# remove_duplicate
-remove duplicate row
+# running remove_duplicate
+node validrecord.js
