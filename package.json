@@ -1,0 +1,27 @@
+{
+  "name": "remove_duplicate",
+  "version": "1.0.0",
+  "description": "remove duplicate row",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ronaldAdd/remove_duplicate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ronaldAdd/remove_duplicate/issues"
+  },
+  "homepage": "https://github.com/ronaldAdd/remove_duplicate#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cron-job-manager": "^2.2.1",
+    "debug": "~2.6.9",
+    "dotenv": "^10.0.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.15"
+  }
+}
