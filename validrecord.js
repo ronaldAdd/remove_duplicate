@@ -37,7 +37,7 @@ const runProcess=function(){
 + "  bt.token_id ,"
 + "  bt.from_address ,"
 + "  bt.to_address"
-+ "  having count_token_address > 1"
++ "  having count_token_address > 1 limit 1"
   var result=conMysql.show(sql);
   Promise.all([result]).then((values) => {
     let countRow=values[0].length;
@@ -104,9 +104,15 @@ manager = new CronJobManager( // this creates a new manager and adds the argumen
           `delete from block_transaction where id=${values[0][i].id}`;
           var resultDelete=conMysql.show(strDelete);
           Promise.all([resultDelete]).then((valuesDelete) => {
-            console.log(valuesDelete,'delete');
+            console.log(valuesDelete,valuesDelete.length,'delete');
           }).finally(() => {
+
             console.log("delete successfully");
+            i=0;
+            manager.stop('a_key_string_to_call_this_job');
+            runProcess();
+            console.log('repeat loop');
+    
           })
           console.log(values[0][i].id,'datas',values[0].length);
         }
