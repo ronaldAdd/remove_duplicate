@@ -17,6 +17,7 @@ conMysql.connect();
 
 const runProcess=function(){
   //add data block number  
+  console.log("run");
   var tmpData=[];
   let sql =
 "  select "
@@ -101,21 +102,21 @@ manager = new CronJobManager( // this creates a new manager and adds the argumen
       Promise.all([result]).then((values) => {
         for(let i=0;i<(values[0].length)-1;i++){
           let strDelete = 
-          `delete from block_transaction where id=${values[0][i].id}`;
+          `select from block_transaction where id=${values[0][i].id}`;
           var resultDelete=conMysql.show(strDelete);
           Promise.all([resultDelete]).then((valuesDelete) => {
-            console.log(valuesDelete,valuesDelete.length,'delete');
+            console.log(valuesDelete,'delete');
           }).finally(() => {
 
             console.log("delete successfully");
-            i=0;
-            manager.stop('a_key_string_to_call_this_job');
-            runProcess();
-            console.log('repeat loop');
-    
           })
           console.log(values[0][i].id,'datas',values[0].length);
         }
+      }).finally(() => {
+        i=0;
+        manager.stop('a_key_string_to_call_this_job');
+        console.log('repeat loop');
+        runProcess();        
       })
       i++;
     }
