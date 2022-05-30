@@ -107,16 +107,16 @@ manager = new CronJobManager( // this creates a new manager and adds the argumen
           Promise.all([resultDelete]).then((valuesDelete) => {
             console.log(valuesDelete,'delete');
           }).finally(() => {
-
             console.log("delete successfully");
+            i=0;
+            manager.stop('a_key_string_to_call_this_job');
+            console.log('repeat loop');
+            runProcess();            
           })
           console.log(values[0][i].id,'datas',values[0].length);
         }
       }).finally(() => {
-        i=0;
-        manager.stop('a_key_string_to_call_this_job');
-        console.log('repeat loop');
-        runProcess();        
+        console.log('query complete');
       })
       i++;
     }
