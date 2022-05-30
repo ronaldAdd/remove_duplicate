@@ -102,7 +102,7 @@ manager = new CronJobManager( // this creates a new manager and adds the argumen
       Promise.all([result]).then((values) => {
         for(let i=0;i<(values[0].length)-1;i++){
           let strDelete = 
-          `select from block_transaction where id=${values[0][i].id}`;
+          `delete from block_transaction where id=${values[0][i].id}`;
           var resultDelete=conMysql.show(strDelete);
           Promise.all([resultDelete]).then((valuesDelete) => {
             console.log(valuesDelete,'delete');
